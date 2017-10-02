@@ -1,5 +1,5 @@
 # HyperSnakes
-My solution the problem presented by HyperScience at HackConf 2017
+My solution to the problem presented by HyperScience at HackConf 2017
 
 This is cleaned up version of the solution that won 3rd place
 
