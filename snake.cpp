@@ -128,7 +128,7 @@ int main() {
 }
 
 void input() {
-    for (auto i = 0u ; i < 20 ; ++i) {
+    for (auto i = 0u ; i < BOARD_X ; ++i) {
         scanf("%s19", board[i]);
     }
 }
@@ -136,8 +136,8 @@ void input() {
 void fillLists(std::deque<snakeFrag>& mySnake, std::deque<snakeFrag>& enemySnake, std::vector<position>& apples, position& myHead, position& enemyHead) {
     position temp;
     snakeFrag tSnake;
-    for (auto i = 0u ; i < 20 ; ++i) {
-        for (auto k = 0u ; k < 20; ++k) {
+    for (auto i = 0u ; i < BOARD_X ; ++i) {
+        for (auto k = 0u ; k < BOARD_Y; ++k) {
             temp.x = i;
             temp.y = k;
 
@@ -169,10 +169,10 @@ int heuristCost(position point1, position point2) {
     if (board[point1.x][point1.y] == '@') {
         mod = -2;
     }
-    if (point1.x == 0 || point1.x == 19) {
+    if (point1.x == 0 || point1.x == BOARD_X - 1) {
         mod += 1;
     }
-    if (point1.y == 0 || point1.y == 19) {
+    if (point1.y == 0 || point1.y == BOARD_y - 1) {
         mod += 1;
     }
     return (x + y + mod);
@@ -198,8 +198,8 @@ std::vector<position> aStar(position startPoint, position endPoint, bool heu) {
     position temp;
     int tentative_gScore;
     std::vector<position> neighbors;
-    for (auto i = 0u ; i < 20 ; ++i) {
-        for (auto k = 0u ; k < 20 ; ++k) {
+    for (auto i = 0u ; i < BOARD_X ; ++i) {
+        for (auto k = 0u ; k < BOARD_Y ; ++k) {
             temp.x = i;
             temp.y = k;
 
@@ -263,7 +263,7 @@ position lowestScore(std::map<position, int> score, std::vector<position> openSe
 std::vector<position> getValidNeighbors(position current) {
     std::vector<position> neighbors;
     position temp;
-    if (current.x+1 < 20 && (board[current.x+1][current.y] == '.' || board[current.x+1][current.y] == '@' )) {
+    if (current.x+1 < BOARD_X && (board[current.x+1][current.y] == '.' || board[current.x+1][current.y] == '@' )) {
         temp.x = (current.x + 1);
         temp.y = current.y;
         neighbors.push_back(temp);
@@ -274,7 +274,7 @@ std::vector<position> getValidNeighbors(position current) {
         neighbors.push_back(temp);
     }
 
-    if (current.y+1 < 20 && (board[current.x][current.y+1] == '.' || board[current.x][current.y+1] == '@' )) {
+    if (current.y+1 < BOARD_Y && (board[current.x][current.y+1] == '.' || board[current.x][current.y+1] == '@' )) {
         temp.x = current.x;
         temp.y = (current.y + 1);
         neighbors.push_back(temp);
@@ -354,8 +354,8 @@ double priority(position center, double dist, std::vector<appleData> applesData,
     int distToCenter;
     int cornerRate = 0;
 
-    if ((applesData[appleID].pos.x == 0 || applesData[appleID].pos.x == 19) &&
-        (applesData[appleID].pos.y == 0 || applesData[appleID].pos.y == 19)) {
+    if ((applesData[appleID].pos.x == 0 || applesData[appleID].pos.x == BOARD_X - 1) &&
+        (applesData[appleID].pos.y == 0 || applesData[appleID].pos.y == BOARD_Y - 1)) {
         cornerRate = MAX_COST;
     }
 
