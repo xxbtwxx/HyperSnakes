@@ -1,0 +1,37 @@
+Whether on a computer, Gameboy, or your old Nokia, most likely, all of us has played the game <a href="https://en.wikipedia.org/wiki/Snake_(video_game)">Snake</a>.
+
+he standard rules apply:
+At the beginning of the game the snakes are 1 in length.
+Eating an apple makes your snake a segment longer.
+When a snake eats an apple, it grows from its head. In particular, the snake's head rests on the apple, and its body does not move.
+An attempt to move through a field containing a snake (whether your own or that of the opponent) is an invalid move and leads to instant loss.
+Stepping on the field where your snake ends is not allowed (that is, first move the head and then the rest of the body).
+An attempt to get out of the board is an invalid move and leads to instant loss.
+
+Several other rules have been added to account for the second player:
+All the apples are placed on the board (and available for eating) at the beginning of the game.
+The game is turn based: On turn one player 1 makes a move on turn two player 2 on turn three player one again and so on.
+After eating the last apple the game ends and the winner is the player with longer snake.
+If in the last 40 moves none of the snakes have eaten an apple the game ends and the player with longer snake wins. 
+If they are of equal length, the one who last eats an apple wins. 
+If none of the snakes have eaten an apple, the first player wins.
+Each of the opponents play against each other in five different layouts.
+Each layout is played twice - once you are the first to make a turn and once you are second, exchanging your starting position.
+
+Maximum allowed execution time is 0.2 seconds and maximum allowed memory is 64MiB.
+Program crash, trying to fork, using the network, or printing anything other than what is described in the Output section is considered an invalid move and leads to an instant loss.
+
+Ranking is based on the number of wins from all games against all opponents (including unofficial). 
+If two players have an equal number of points the one who submitted a solution earlier will be ranked higher. 
+Unofficial players are marked with an asterisk.
+
+Input
+For each move your program will be called once.
+The input (stdin) will containt 20 rows and 20 columns - the current state of the game.
+Symbol '.' indicates an empty field. Symbol '@' denotes an apple.
+The English alphabet ('A' - 'Z') indicates a part of your snake, with the letter 'A' being its head, 'B' being the sencond part of the body and so on. 
+A letter from the English alphabet ('a' - 'z') denotes a part of your enemy's snake described in a similar way. 
+At the first turn of the board there will be 25 apples.
+
+Output
+On the standard output (stdout), you must print in which direction your snake should go "Up", "Down", "Left" or "Right"
